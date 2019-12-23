@@ -23,7 +23,7 @@ const Game = () => {
 
   // Render using XML
   async function getGamesXml() {
-    const response = await fetch('https://www.boardgamegeek.com/xmlapi2/collection?username=samort7&subtype=boardgame&own=1');
+    const response = await fetch('https://www.boardgamegeek.com/xmlapi2/collection?username=sever79&subtype=boardgame&own=1');
     const xml = await response.text();
     renderGameData(xml);
   }
@@ -73,7 +73,7 @@ const Game = () => {
   else {
     return (
       <>
-        <h2>Collection of samort7</h2>
+        <h2>Collection of sever79</h2>
         <div id="games"/>
       </>
     );
