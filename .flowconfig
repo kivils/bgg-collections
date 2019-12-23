@@ -1,0 +1,34 @@
+[ignore]
+.*/node_modules/editions/es2015/index.js
+.*/node_modules/stylelint/.*
+.*/node_modules/radium/.*
+.*/node_modules/extract-react-intl/test/.*
+.*/node_modules/@mapbox/jsonlint-lines-primitives/test/.*
+./public
+
+[include]
+./src
+
+[libs]
+.flow/lib
+<PROJECT_ROOT>/../../flow-typed
+
+[lints]
+
+[options]
+
+module.ignore_non_literal_requires=true
+
+# aliases
+module.name_mapper='^@css/\(.*\)$' -> '<PROJECT_ROOT>/src/styles/\1'
+
+# additional extensions
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/.flow/GenericModules.js.flow'
+module.name_mapper.extension='xml' -> '<PROJECT_ROOT>/.flow/GenericModules.js.flow'
+module.name_mapper.extension='ico' -> '<PROJECT_ROOT>/.flow/GenericModules.js.flow'
+module.name_mapper.extension='webmanifest' -> '<PROJECT_ROOT>/.flow/GenericModules.js.flow'
+
+[strict]
+
+[untyped]
+
