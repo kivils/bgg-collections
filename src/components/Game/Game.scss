@@ -1,0 +1,44 @@
+.list {
+  //
+}
+
+.item {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.imgWrapper {
+  min-width: 100px;
+  max-width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+  border: 1px solid #ccc;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  //
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.year {
+  margin-bottom: .5rem;
+  color: gray;
+}
+
+.comment {
+  margin-bottom: .25rem;
+}
+
+.count {
+  color: gray;
+}

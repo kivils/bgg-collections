@@ -4,6 +4,7 @@ import './Game.scss';
 
 const Game = () => {
   const [games, setGames] = useState([]);
+  const isJson = true; // We'll use json over xml. XML - as a reference from oficcial docs
 
   useEffect(() => {
     getGamesJson();
@@ -13,12 +14,13 @@ const Game = () => {
   // Trying different options for rendering to choose the optimal one
   // Render using JSON
   async function getGamesJson() {
-    const response = await fetch('https://www.boardgamegeek.com/xmlapi2/thing?id=1406,320');
+    const response = await fetch('https://www.boardgamegeek.com/xmlapi2/collection?username=sever79&subtype=boardgame&own=1');
     const xml = await response.text();
-    const gamesString = convert.xml2json(xml, {compact: false, spaces: 2});
-    const games = JSON.parse(gamesString)
-      .elements[0].elements;
+    const gamesString = convert.xml2json(xml, {compact: true, spaces: 2});
+    const games = JSON.parse(gamesString).items.item
+      // .elements[0].elements;
     setGames(games);
+    console.log(games[0]);
   }
 
   // Render using XML
@@ -48,26 +50,31 @@ const Game = () => {
 
       //Add the paragraph tag to the div in the body
       const games = document.getElementById("games");
-      games.appendChild(tempName);
+      if (games) {
+        games.appendChild(tempName);
+      }
     }
   }
 
-  const isJson = false;
-
-  if(isJson) {
+  if(isJson) { // getGamesJson
     return (
-      <ul>
-        {games.map((game, i) => (
-          <li key={i}>
-            <div>Type: {game.attributes.type}</div>
-            {
-              game.elements.map((gameProp, j) => (
-                <div key={j}>Name: {gameProp.name}</div>
-              ))
-            }
+      games.length ?
+      <ul className="list">
+        {Object.keys(games).map(game => (
+          <li key={game} className="item">
+            <div className="imgWrapper"><img src={games[game].thumbnail._text} className="img" /></div>
+            <div className="info">
+              <div className="name">
+                <a href={'https://boardgamegeek.com/boardgame/' + games[game]._attributes.objectid + '/'} target="_blank">{games[game].name._text}</a>
+              </div>
+              <div className="year">{games[game].yearpublished._text}</div>
+              {games[game].wishlistcomment && <div className="comment">Комментарий: {games[game].wishlistcomment._text}</div>}
+              <div className="count">Сыграно партий: {games[game].numplays._text}</div>
+            </div>
           </li>
         ))}
       </ul>
+      : null
     )
   }
   else {
