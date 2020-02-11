@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import convert from 'xml-js'
-import './Game.scss';
+import styles from './Game.scss';
 
 const Game = () => {
   const [games, setGames] = useState([]);
@@ -59,13 +59,13 @@ const Game = () => {
   if(isJson) { // getGamesJson
     return (
       games.length ?
-      <ul className="list">
+      <ul className={styles['list']}>
         {Object.keys(games).map(game => (
           <li key={game} className="item">
             <div className="imgWrapper"><img src={games[game].thumbnail._text} className="img" /></div>
             <div className="info">
               <div className="name">
-                <a href={'https://boardgamegeek.com/boardgame/' + games[game]._attributes.objectid + '/'} target="_blank">{games[game].name._text}</a>
+                <a href={'https://boardgamegeek.com/boardgame/' + games[game]._attributes.objectid + '/'} className="nameLink" target="_blank">{games[game].name._text}</a>
               </div>
               <div className="year">{games[game].yearpublished._text}</div>
               {games[game].wishlistcomment && <div className="comment">Комментарий: {games[game].wishlistcomment._text}</div>}
