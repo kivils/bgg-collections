@@ -4,7 +4,7 @@ import styles from './Game.scss';
 
 const Game = () => {
   const [games, setGames] = useState([]);
-  const isJson = true; // We'll use json over xml. XML - as a reference from oficcial docs
+  const isJson = true; // We'll use json over xml. XML - as a reference from official docs
 
   useEffect(() => {
     getGamesJson();
@@ -58,23 +58,28 @@ const Game = () => {
 
   if(isJson) { // getGamesJson
     return (
-      games.length ?
-      <ul className={styles['list']}>
-        {Object.keys(games).map(game => (
-          <li key={game} className="item">
-            <div className="imgWrapper"><img src={games[game].thumbnail._text} className="img" /></div>
-            <div className="info">
-              <div className="name">
-                <a href={'https://boardgamegeek.com/boardgame/' + games[game]._attributes.objectid + '/'} className="nameLink" target="_blank">{games[game].name._text}</a>
-              </div>
-              <div className="year">{games[game].yearpublished._text}</div>
-              {games[game].wishlistcomment && <div className="comment">Комментарий: {games[game].wishlistcomment._text}</div>}
-              <div className="count">Сыграно партий: {games[game].numplays._text}</div>
-            </div>
-          </li>
-        ))}
-      </ul>
-      : null
+      <>
+        <h2>Коллекция пользователя sever79 ({games.length} игр)</h2>
+        {
+          games.length ?
+          <ul className={styles['list']}>
+            {Object.keys(games).map(game => (
+              <li key={game} className="item">
+                <div className="imgWrapper"><img src={games[game].thumbnail._text} className="img" /></div>
+                <div className="info">
+                  <div className="name">
+                    <a href={'https://boardgamegeek.com/boardgame/' + games[game]._attributes.objectid + '/'} target="_blank">{games[game].name._text}</a>
+                  </div>
+                  <div className="year">{games[game].yearpublished._text}</div>
+                  {games[game].wishlistcomment && <div className="comment">Комментарий: {games[game].wishlistcomment._text}</div>}
+                  <div className="count">Сыграно партий: {games[game].numplays._text}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          : null
+        }
+      </>
     )
   }
   else {
