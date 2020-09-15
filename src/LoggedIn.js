@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
 import { useAuth } from "./context/auth";
-import './App.scss';
+import './App.css';
 
 function LoggedIn({ component: Component, ...rest }) {
   const { authTokens } = useAuth();

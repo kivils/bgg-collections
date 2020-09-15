@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import convert from 'xml-js';
 import Card from '../../styledComponents/Card';
-import './Game.scss';
+import './Game.css';
 
 const Game = () => {
   const [games, setGames] = useState([]);

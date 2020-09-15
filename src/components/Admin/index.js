@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../../context/auth'
 import Button from '../../styledComponents/Button'
 import { Header2 } from '../../styledComponents/Typography'
-import './Admin.scss';
+import './Admin.css';
 
 const Admin = () => {
   const { setAuthTokens } = useAuth();

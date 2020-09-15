@@ -7,7 +7,7 @@ import Game from './components/Game'
 import Login from './components/User/Login'
 import Signup from './components/User/Signup'
 import Admin from './components/Admin'
-import './App.scss';
+import './App.css';
 
 function App(props) {
   const existingTokens = localStorage.getItem("tokens");
