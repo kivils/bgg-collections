@@ -1,7 +1,9 @@
 {
   "name": "bgg-collections",
+  "description": "Application to list Board Games Geek's user game collection and manage game sessions",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": "Julia Sesyunina <idwebkivils@gmail.com>",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -34,5 +36,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kivils/bgg-collections"
+  },
+  "bugs": {
+    "url": "https://github.com/kivils/bgg-collections/issues"
   }
 }
