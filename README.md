@@ -11,7 +11,7 @@
 ## Requirements
 
 - [NodeJs](https://nodejs.org)
-- [Yarn](https://nodejs.org)
+- [Yarn](https://yarnpkg.com/)
 
 ## Development
 
